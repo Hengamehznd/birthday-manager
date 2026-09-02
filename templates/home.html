@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% load filters %}
+{% block content %}
+
+{% include 'navbar.html' %}
+<main class="container my-4">
+
+        <!-- 2. فرم افقی ثبت تولد جدید (Create) -->
+        <div class="card card-custom mb-4 p-3">
+            <h6 class="fw-bold mb-3 d-flex align-items-center gap-2 text-secondary">
+                <i data-feather="user-plus"></i>
+                ثبت تولد جدید
+            </h6>
+            <!-- علی جان، این فرم رو بعدا به {% csrf_token %} و ویوی Create وصل می‌کنی -->
+            <form action="#" method="POST" class="row g-2 align-items-center">
+                
+                <div class="col-12 col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i data-feather="user"></i></span>
+                        <input type="text" name="name" class="form-control" placeholder="نام و نام خانوادگی" required>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i data-feather="calendar"></i></span>
+                        <input type="date" name="birth_date" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i data-feather="tag"></i></span>
+                        <select name="relationship" class="form-select">
+                            <option value="friend">دوست</option>
+                            <option value="family">خانواده</option>
+                            <option value="colleague">همکار</option>
+                            <option value="other">سایر</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-2">
+                    <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-1">
+                        <i data-feather="plus-circle"></i>
+                        <span>افزودن</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 3. جدول نمایش تولدها (Read & Delete & Update) -->
+        <div class="card card-custom p-0 overflow-hidden">
+            <div class="table-responsive">
+                <table class="table table-custom table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="px-3">#</th>
+                            <th scope="col">نام</th>
+                            <th scope="col">نسبت</th>
+                            <th scope="col">تاریخ تولد</th>
+                            <th scope="col">سن فعلی</th>
+                            <th scope="col">چند روز تا تولد مانده</th>
+                            <th scope="col" class="text-center">عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for person in all_birthday %}
+                            <tr>
+                                <td class="px-3 fw-bold text-muted">{{person.id}}</td>
+                                <td class="fw-semibold">{{person.name}}</td>
+                                <td><span class="badge bg-light text-dark border">{{person.relation}}</span></td>
+                                <td>{{person.birthday_date|to_jalali}}</td>
+                                <td><span class="badge-age">۲۵ ساله</span></td>
+                                <td><span class="badge-turning">۲۶ سالگی 🎂</span></td>
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-sm btn-outline-warning action-btn me-1" title="ویرایش">
+                                        <i data-feather="edit-2"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-outline-danger action-btn" title="حذف">
+                                        <i data-feather="trash-2"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                            <td class="px-3 fw-bold text-muted">#</td>
+                            <td class="fw-semibold">ناشناس</td>
+                            <td><span class="badge bg-light text-dark border">همکار</span></td>
+                            <td>تولدی ارسال نشده</td>
+                            <td><span class="badge-age"></span></td>
+                            <td><span class="badge-turning"></span></td>
+                            <td class="text-center">
+                                <a href="#" class="btn btn-sm btn-outline-warning action-btn me-1" title="ویرایش">
+                                    <i data-feather="edit-2"></i>
+                                </a>
+                                <a href="#" class="btn btn-sm btn-outline-danger action-btn" title="حذف">
+                                    <i data-feather="trash-2"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}  
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
+
+    </main>
+{% endblock %}

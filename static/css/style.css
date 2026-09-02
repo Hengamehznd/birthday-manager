@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Vazirmatn FD';
+    src: url('https://lib.arvancloud.ir/vazir-font/33.003/Farsi-Digits/fonts/ttf/Vazirmatn-FD-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+:root {
+    --bg-color: #f8fafc;
+    --card-border: #e2e8f0;
+    --primary-accent: #4f46e5;
+}
+
+body {
+    font-family: 'Vazirmatn FD', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.card-custom {
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    background: #ffffff;
+}
+
+.table-custom th {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    border-top: none;
+    background-color: #f1f5f9;
+}
+
+.table-custom td {
+    vertical-align: middle;
+    font-size: 0.95rem;
+}
+
+.badge-age {
+    background-color: #e0e7ff;
+    color: #4338ca;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+}
+
+.badge-turning {
+    background-color: #fef3c7;
+    color: #b45309;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+}
+
+.action-btn {
+    padding: 4px 8px;
+    border-radius: 6px;
+    line-height: 1;
+}
+
+.feather {
+    width: 18px;
+    height: 18px;
+    vertical-align: text-bottom;
+}
