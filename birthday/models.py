@@ -7,7 +7,7 @@ class Birthday(models.Model):
         Family = "FAMILY", "خانواده"
         # لطفا بقیه رو اضافه کنید
 
-    name = models.CharField(max_length=250, verbose_name="نام")
+    name = models.CharField(max_length=250)
     relation = models.CharField(max_length=10, choices=Relation.choices)
     birthday_date = models.DateField()
 
