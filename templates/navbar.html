@@ -1,20 +1,19 @@
-<!-- 1. منوی چسبیده بالا (Sticky Navbar) -->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-glass py-3">
-        <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-primary" href="#">
-                <i data-feather="gift" class="text-primary"></i>
-                <span>مدیریت تولدها</span>
-            </a>
+<nav class="navbar navbar-expand-lg sticky-top navbar-glass py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2 text-primary" href="{% url 'home' %}">
+            <i data-feather="gift" class="text-primary"></i>
+            <span>مدیریت تولدها</span>
+        </a>
 
-            <!-- بخش جستجو -->
-            <form class="d-flex align-items-center gap-2" role="search" method="GET" action="#">
-                <div class="input-group input-group-sm">
-                    <input class="form-control" type="search" name="q" placeholder="جستجوی نام..." aria-label="Search">
-                    <button class="btn btn-outline-primary d-flex align-items-center gap-1" type="submit">
-                        <i data-feather="search"></i>
-                        <span class="d-none d-sm-inline">جستجو</span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </nav>
+        <form class="d-flex align-items-center gap-2" role="search" method="GET" action="{% url 'home' %}">
+            <div class="input-group input-group-sm">
+                <input class="form-control" type="search" name="q"
+                       value="{{ search_query }}" placeholder="جستجوی نام..." aria-label="Search">
+                <button class="btn btn-outline-primary d-flex align-items-center gap-1" type="submit">
+                    <i data-feather="search"></i>
+                    <span class="d-none d-sm-inline">جستجو</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</nav>
