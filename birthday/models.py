@@ -9,6 +9,7 @@ class Birthday(models.Model):
         FAMILY = "FAMILY", "خانواده"
         COLLEAGUE = "COLLEAGUE", "همکار"
         OTHER = "OTHER", "سایر"
+
     name = models.CharField(max_length=250, verbose_name="نام و نام خانوادگی")
     relation = models.CharField(
         max_length=10,
@@ -28,9 +29,13 @@ class Birthday(models.Model):
     @property
     def age(self):
         today = date.today()
-        return today.year - self.birthday_date.year - (
-            (today.month, today.day)
-            < (self.birthday_date.month, self.birthday_date.day)
+        return (
+            today.year
+            - self.birthday_date.year
+            - (
+                (today.month, today.day)
+                < (self.birthday_date.month, self.birthday_date.day)
+            )
         )
 
     @property

@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Birthday
 from datetime import datetime
+from .forms import BirthdayForm
 
 from datetime import datetime
 
@@ -16,13 +17,26 @@ class DateConverter:
 
 
 def home_view(request):
+    form = BirthdayForm()
     all_birthday = Birthday.objects.all()
-    return render(request, "home.html", {"all_birthday": all_birthday})
+
+    context = {
+        "all_birthday": all_birthday,
+        "form": form,
+    }
+    return render(request, "home.html", context)
 
 
-def add_birthday(request, name, birthday):
-    dc = DateConverter()
-    date = dc.to_python(birthday)
-    Birthday.objects.create(name=name, birthday_date=date)
+def add_birthday(request):
+    if request.method == "POST":
+        form = BirthdayForm(request.POST)
+        if form.is_valid():
+            form.save()
 
+        return redirect("home")
+
+
+def delete_birthday(request, id):
+    person = get_object_or_404(Birthday, id=id)
+    person.delete()
     return redirect("home")

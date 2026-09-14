@@ -7,11 +7,11 @@ class BirthdayForm(forms.ModelForm):
     class Meta:
         model = Birthday
         fields = ["name", "birthday_date", "relation"]
-        labels = {
-            "name": "نام و نام خانوادگی",
-            "birthday_date": "تاریخ تولد",
-            "relation": "نسبت",
-        }
+        # labels = {
+        #     "name": "نام و نام خانوادگی",
+        #     "birthday_date": "تاریخ تولد",
+        #     "relation": "نسبت",
+        # }
         widgets = {
             "name": forms.TextInput(
                 attrs={

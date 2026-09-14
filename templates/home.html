@@ -13,32 +13,24 @@
                 ثبت تولد جدید
             </h6>
             <!-- علی جان، این فرم رو بعدا به {% csrf_token %} و ویوی Create وصل می‌کنی -->
-            <form action="#" method="POST" class="row g-2 align-items-center">
-                
+            <form action="{% url 'add' %}" method="POST" class="row g-2 align-items-center">
+                {% csrf_token %}
                 <div class="col-12 col-md-4">
                     <div class="input-group">
                         <span class="input-group-text bg-light"><i data-feather="user"></i></span>
-                        <input type="text" name="name" class="form-control" placeholder="نام و نام خانوادگی" required>
+                        {{ form.name }}
                     </div>
                 </div>
 
                 <div class="col-12 col-md-3">
                     <div class="input-group">
                         <span class="input-group-text bg-light"><i data-feather="calendar"></i></span>
-                        <input type="date" name="birth_date" class="form-control" required>
+                        {{ form.birthday_date }}
                     </div>
                 </div>
 
                 <div class="col-12 col-md-3">
-                    <div class="input-group">
-                        <span class="input-group-text bg-light"><i data-feather="tag"></i></span>
-                        <select name="relationship" class="form-select">
-                            <option value="friend">دوست</option>
-                            <option value="family">خانواده</option>
-                            <option value="colleague">همکار</option>
-                            <option value="other">سایر</option>
-                        </select>
-                    </div>
+                    {{ form.relation }}
                 </div>
 
                 <div class="col-12 col-md-2">
@@ -78,7 +70,7 @@
                                     <a href="#" class="btn btn-sm btn-outline-warning action-btn me-1" title="ویرایش">
                                         <i data-feather="edit-2"></i>
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger action-btn" title="حذف">
+                                    <a href="{% url 'delete' person.id %}" class="btn btn-sm btn-outline-danger action-btn" title="حذف">
                                         <i data-feather="trash-2"></i>
                                     </a>
                                 </td>
