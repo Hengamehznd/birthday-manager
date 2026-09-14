@@ -9,8 +9,6 @@ class Birthday(models.Model):
         FAMILY = "FAMILY", "خانواده"
         COLLEAGUE = "COLLEAGUE", "همکار"
         OTHER = "OTHER", "سایر"
-        #ok
-
     name = models.CharField(max_length=250, verbose_name="نام و نام خانوادگی")
     relation = models.CharField(
         max_length=10,
